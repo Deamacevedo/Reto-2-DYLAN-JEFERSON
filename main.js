@@ -1,6 +1,6 @@
 function calcularMovimientos(fila,columna) {
     const movimientos = [[1,2],[1,-2],[2,1],[2,-1],[-1,2],[-1,-2],[-2,1],[-2,-1]];
-    const movimientosValidos = []
+    const movimientosValidos = [];
     
     const fila = document.getElementById("fila").value;
     const columna = document.getElementById("columna").value;
@@ -12,7 +12,7 @@ function calcularMovimientos(fila,columna) {
             movimientosValidos.push([nuevafila,nuevacolumna])
         }
     }
-    return movimientosValidos
+    return movimientosValidos;
 }
 
 
@@ -34,6 +34,6 @@ function mostrarMovimientosCaballo() {
 	}
 
 	resultado.innerHTML = 'El caballo puede moverse a las siguientes casillas:<ul>' +
-		movimientos.map(([r, c]) => `<li>Fila: ${r}, Columna: ${c}</li>`).join('') +
+		movimientos.map(([fila, columna]) => `<li>Fila: ${fila}, Columna: ${columna}</li>`).join('') +
 		'</ul>';
 }
