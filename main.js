@@ -2,8 +2,8 @@ function calcularMovimientos(fila,columna) {
     const movimientos = [[1,2],[1,-2],[2,1],[2,-1],[-1,2],[-1,-2],[-2,1],[-2,-1]];
     const movimientosValidos = []
     
-    const fila = document.getElementById("fila");
-    const columna = document.getElementById("columna");
+    const fila = document.getElementById("fila").value;
+    const columna = document.getElementById("columna").value;
 
     for (const [movimientofila, movimientocolummna] of movimientos){
         const nuevafila = fila + movimientofila;
@@ -12,7 +12,28 @@ function calcularMovimientos(fila,columna) {
             movimientosValidos.push([nuevafila,nuevacolumna])
         }
     }
+    return movimientosValidos
+}
 
-    
 
+
+function mostrarMovimientosCaballo() {
+	const fila = document.getElementById('fila').value;
+	const columna = document.getElementById('columna').value;
+	const resultado = document.getElementById('resultado');
+
+	if (!isValidCoordinate(fila, columna)) {
+		resultado.textContent = 'Coordenada inválida.';
+		return;
+	}
+
+	const movimientos = calcularMovimientos(fila, columna);
+	if (movimientos.length === 0) {
+		resultado.textContent = 'No hay movimientos posibles.';
+		return;
+	}
+
+	resultado.innerHTML = 'El caballo puede moverse a las siguientes casillas:<ul>' +
+		movimientos.map(([r, c]) => `<li>Fila: ${r}, Columna: ${c}</li>`).join('') +
+		'</ul>';
 }
